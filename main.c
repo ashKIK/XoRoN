@@ -40,29 +40,29 @@ enum square {
     NOSQ
 };
 
-#define INFO_STRING             "info string "
-#define BUILD_PROT					    "UCI"
-#define BUILD_NUMBER				    "{196}"
-#define BUILD_TAG					      "$ENV{BUILD_TAG}"
-#define BUILD_BRANCH				    "{SSE4.2}"
-#define MPLY						        64
-#define INFINITY					      32767
-#define MATESCORE					      32000
-#define MEVAL						        29999
-#define SQB(x)						      (1ull << (x))
-#define PC(x, y)					      (((y) << 1) | (x))
-#define FILE(x)						      ((x) & 7)
-#define RANK(x)						      ((x) >> 3)
+#define INFO_STRING					"info string "
+#define BUILD_PROT					"UCI"
+#define BUILD_NUMBER				"{196}"
+#define BUILD_TAG					"$ENV{BUILD_TAG}"
+#define BUILD_BRANCH				"{SSE4.2}"
+#define MPLY						64
+#define INFINITY					32767
+#define MATESCORE					32000
+#define MEVAL						29999
+#define SQB(x)						(1ull << (x))
+#define PC(x, y)					(((y) << 1) | (x))
+#define FILE(x)						((x) & 7)
+#define RANK(x)						((x) >> 3)
 #define PCB(position, x, y)			((position)->CLB[x] & (position)->TPB[y])
 #define TPONSQR(position, x)		(((position)->PCC[x]) >> 1)
 #define KINGSQR(position, x)		((position)->KINGSQUARE[x])
-#define L1ATT(o, x)					    attacks[0][x][((o) >> ((070 & (x)) + 1)) & 63]
-#define L2ATT(o, x)					    attacks[1][x][((0x0101010101010101ull & ((o) >> ((x) & 7))) * 0x0204081020408000ull) >> 58]
-#define L3ATT(o, x)					    attacks[2][x][(((o) & controlMask[2][x]) * 0x0202020202020202ull) >> 58]
-#define L4ATT(o, x)					    attacks[3][x][(((o) & controlMask[3][x]) * 0x0202020202020202ull) >> 58]
-#define ROOKATT(o, x)				    (L1ATT(o, x) | L2ATT(o, x))
-#define BISHOPATT(o, x)				  (L3ATT(o, x) | L4ATT(o, x))
-#define QUEENATT(o, x)				  ((L1ATT(o, x)| L2ATT(o, x)) | (L3ATT(o, x) | L4ATT(o, x)))
+#define L1ATT(o, x)					attacks[0][x][((o) >> ((070 & (x)) + 1)) & 63]
+#define L2ATT(o, x)					attacks[1][x][((0x0101010101010101ull & ((o) >> ((x) & 7))) * 0x0204081020408000ull) >> 58]
+#define L3ATT(o, x)					attacks[2][x][(((o) & controlMask[2][x]) * 0x0202020202020202ull) >> 58]
+#define L4ATT(o, x)					attacks[3][x][(((o) & controlMask[3][x]) * 0x0202020202020202ull) >> 58]
+#define ROOKATT(o, x)				(L1ATT(o, x) | L2ATT(o, x))
+#define BISHOPATT(o, x)				(L3ATT(o, x) | L4ATT(o, x))
+#define QUEENATT(o, x)				((L1ATT(o, x)| L2ATT(o, x)) | (L3ATT(o, x) | L4ATT(o, x)))
 
 typedef struct {
     D64 KEYLCT, CLB[2], TPB[6], REPLIST[256];
